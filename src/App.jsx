@@ -13,9 +13,11 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleWhatsAppClick = (planName = 'Quero falar com um consultor') => {
-    const message = encodeURIComponent(`Olá! Vim pelo site da J&C Rastreamento e gostaria de saber mais. (${planName})`);
-    window.open(`https://wa.me/5586994191636?text=${message}`, '_blank');
+  const handleWhatsAppClick = (planName) => {
+    const baseMessage = 'Olá! Vim pelo site da J&C Rastreamento e gostaria de saber mais.';
+    const finalMessage = planName ? `${baseMessage} (${planName})` : baseMessage;
+    const encodedMessage = encodeURIComponent(finalMessage);
+    window.open(`https://wa.me/5586994191636?text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -26,7 +28,7 @@ function App() {
           <div className="logo font-bold text-xl text-white">
             <span className="text-primary-yellow">J&C</span> Rastreamento
           </div>
-          <button onClick={() => handleWhatsAppClick('Atendimento Rápido')} className="btn btn-whatsapp pulse-animation text-sm" style={{ padding: '0.6rem 1.2rem' }}>
+          <button onClick={() => handleWhatsAppClick()} className="btn btn-whatsapp pulse-animation text-sm" style={{ padding: '0.6rem 1.2rem' }}>
             <Zap size={16} fill="currentColor" /> Falar Agora
           </button>
         </div>
@@ -48,7 +50,7 @@ function App() {
               Mais de R$ 2 Milhões em veículos recuperados. Tecnologia de ponta, aplicativo em tempo real e equipe tática 24 horas por dia. Não conte com a sorte.
             </p>
             <div className="flex" style={{ gap: '1rem', flexWrap: 'wrap' }}>
-              <button onClick={() => handleWhatsAppClick('Botão Principal - Proteção FIPE')} className="btn btn-whatsapp pulse-animation" style={{ padding: '1.2rem 2.5rem', fontSize: '1.125rem' }}>
+              <button onClick={() => handleWhatsAppClick()} className="btn btn-whatsapp pulse-animation" style={{ padding: '1.2rem 2.5rem', fontSize: '1.125rem' }}>
                 Proteger Meu Veículo Agora
               </button>
             </div>
@@ -156,7 +158,7 @@ function App() {
       {/* Floating Action Button */}
       <a 
         href="#" 
-        onClick={(e) => { e.preventDefault(); handleWhatsAppClick('Botão Flutuante (Dúvidas)'); }} 
+        onClick={(e) => { e.preventDefault(); handleWhatsAppClick(); }} 
         className="whatsapp-float" 
         title="Fale Conosco pelo WhatsApp"
       >
