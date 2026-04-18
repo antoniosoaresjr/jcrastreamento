@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #FFFDF7;
+  color: #1E2A3A;
+  overflow-x: hidden;
+}
+
+/* ── Noise Overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Magnetic Button ── */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(251, 192, 45, 0.3);
+}
+
+.btn-magnetic:hover::before {
+  left: 0;
+}
+
+/* Golden glow for primary buttons */
+.btn-golden {
+  background: linear-gradient(135deg, #FBC02D 0%, #E5A800 100%);
+  color: #1E2A3A;
+  font-weight: 700;
+}
+
+.btn-golden:hover {
+  box-shadow: 0 8px 30px rgba(251, 192, 45, 0.4);
+}
+
+/* ── Lift Effect for Links ── */
+.lift-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    color 0.3s ease;
+}
+
+.lift-hover:hover {
+  transform: translateY(-1px);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFFDF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FBC02D;
+}
+
+/* ── Feature Card Animations ── */
+.shuffler-card {
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Typewriter ── */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Pulsing Dot ── */
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.5);
+  }
+}
+
+/* ── Protocol Stacking ── */
+.protocol-card {
+  will-change: transform, filter, opacity;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background-color: #FBC02D;
+  color: #1E2A3A;
+}
+
+/* ── Gradient Text ── */
+.text-gradient-golden {
+  background: linear-gradient(135deg, #FBC02D 0%, #00B4F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Mascot Float Animation ── */
+.mascot-float {
+  animation: mascot-float 4s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* ── Glow Effects ── */
+.glow-golden {
+  box-shadow: 0 0 40px rgba(251, 192, 45, 0.15);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(0, 180, 240, 0.15);
+}

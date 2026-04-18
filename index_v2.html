@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J&C Rastreamento | Proteção Premium em Timon e Teresina</title>
+
+    <!-- Fonts: Inter (Moderno/Tech) + Poppins (Headlines) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. CORE DESIGN SYSTEM (Neo-Security)
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --color-primary: #1F2A44;
+            /* Deep Navy Blue - Autoridade */
+            --color-secondary: #0F172A;
+            /* Darker Navy - Backgrounds */
+            --color-accent: #FFCC00;
+            /* High-Vis Yellow - Ação */
+            --color-cyan: #13aae3;
+            /* Trust Cyan - Detalhes */
+            --color-success: #25D366;
+            /* WhatsApp Green */
+
+            /* Text Colors */
+            --text-main: #F4F6F8;
+            /* Off-white para fundo escuro */
+            --text-dark: #1e293b;
+            /* Dark slate para fundo claro */
+            --text-muted: #94a3b8;
+            /* Cinza suave */
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+
+            /* Shadows & Depth */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-neon: 0 0 15px rgba(255, 204, 0, 0.3);
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* =========================================
+           2. RESET & BASE
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #F8FAFC;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.1;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* =========================================
+           3. COMPONENTS
+           ========================================= */
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            /* Geometria mais "tech", menos redonda */
+            letter-spacing: 0.5px;
+            transition: var(--transition-fast);
+            cursor: pointer;
+            gap: 10px;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.6);
+            background-color: #ffd633;
+        }
+
+        .btn-success {
+            background-color: var(--color-success);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border-radius: var(--radius-full);
+            /* WhatsApp combina com redondo */
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            background-color: #1ebe57;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           4. SECTIONS
+           ========================================= */
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: rgba(31, 42, 68, 0.95);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .brand i {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+        }
+
+        /* --- HERO SECTION (Asymmetric) --- */
+        .hero {
+            background-color: var(--color-primary);
+            position: relative;
+            padding: 80px 0 100px;
+            /* Mais espaço embaixo para overlay */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+        }
+
+        /* Background Pattern Sutil */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(31, 42, 68, 0.9), rgba(31, 42, 68, 0.95)),
+                url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text h1 span {
+            color: var(--color-accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: rgba(19, 170, 227, 0.3);
+            /* Cyan highlight */
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: var(--spacing-lg);
+            max-width: 90%;
+        }
+
+        .hero-media {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Mascote "Saindo" da tela */
+        .mascot-img {
+            max-width: 120%;
+            /* Maior que a caixa para estourar limite */
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+            transform: scale(1.1) translateX(-20px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1.1) translateX(-20px);
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.1) translateX(-20px);
+            }
+        }
+
+        /* Badge Flutuante */
+        .floating-badge {
+            position: absolute;
+            top: 20%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse-glow 3s infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+            }
+        }
+
+        /* --- STATS BAR (Overlap) --- */
+        .stats-bar {
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-lg);
+            margin-top: -60px;
+            /* Overlap na Hero Section */
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .stat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            background: #e2e8f0;
+            display: none;
+            /* Mobile hidden */
+        }
+
+        @media (min-width: 768px) {
+            .stat-divider {
+                display: block;
+            }
+        }
+
+
+        /* --- PAIN POINTS (Grid) --- */
+        .pain-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .pain-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            border: 1px solid #f1f5f9;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-primary);
+            transition: 0.3s;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pain-card:hover::before {
+            background: var(--color-accent);
+            width: 6px;
+        }
+
+        .pain-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+            background: #f1f5f9;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+        }
+
+        .pain-card h3 {
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .pain-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+
+        /* --- PRICING (Highlight) --- */
+        .pricing-section {
+            background: var(--color-secondary);
+            padding: 80px 0;
+            color: white;
+            position: relative;
+        }
+
+        /* Shape divider top */
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: var(--color-secondary);
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: white;
+            color: var(--text-dark);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            /* Propositalmente maior */
+            border: 4px solid var(--color-accent);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .badge-guarantee {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 20px;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .price-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            text-align: left;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .feature-list i {
+            color: var(--color-success);
+            font-size: 1.1rem;
+        }
+
+        .feature-list .unavailable {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        .feature-list .unavailable i {
+            color: #cbd5e1;
+        }
+
+        .feature-highlight {
+            background: #fffbeb;
+            /* Amarelo muito claro */
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            border: 1px dashed var(--color-accent);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            margin: 0 10px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- UTILS --- */
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        .text-cyan {
+            color: var(--color-cyan);
+        }
+
+        .sticky-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            background: var(--color-success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: 0.3s;
+            animation: bounce-in 1s;
+        }
+
+        .sticky-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-media {
+                order: -1;
+                /* Imagem acima no mobile */
+            }
+
+            .mascot-img {
+                max-width: 80%;
+                transform: none;
+                animation: none;
+                margin: 0 auto;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+                margin: 20px 0;
+            }
+
+            .hidden-mobile {
+                display: none;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10001;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            position: relative;
+            animation: slide-up 0.3s ease;
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="brand">
+                <i class="fa-solid fa-location-dot"></i> J&C RASTREAMENTO
+            </div>
+            <a href="https://wa.me/559985017954" class="btn btn-success btn-sm hidden-mobile"
+                style="padding: 10px 20px; font-size: 0.9rem;">
+                <i class="fa-brands fa-whatsapp"></i> Atendimento Rápido
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <h1>Proteção que você vê, segurança que você <span>SENTE.</span></h1>
+                <p>Monitoramento 24h em Timon e Teresina com Equipe Tática. Garantia de recuperação ou <strong>pagamos
+                        100% da FIPE</strong> do seu veículo.</p>
+
+                <div
+                    style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; /*mobile fix*/ margin: 0 auto; /*mobile fix*/ ">
+                    <a href="https://wa.me/559985017954?text=Quero%20proteger%20meu%20veículo" class="btn btn-primary">
+                        <i class="fa-solid fa-shield-halved"></i> PROTEGER AGORA
+                    </a>
+                    <a href="#planos" class="btn btn-outline"
+                        style="color: white; border-color: rgba(255,255,255,0.3);">
+                        Ver Planos
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-media">
+                <img src="http://jcrastreamento.com.br/wp-content/uploads/2026/02/com-sombra.png" alt="Mascote J&C"
+                    class="mascot-img">
+
+                <!-- Floating Element -->
+                <div class="floating-badge">
+                    <i class="fa-solid fa-check-circle" style="color: var(--color-accent); font-size: 1.5rem;"></i>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Recuperados Hoje</div>
+                        <div style="font-size: 1.1rem; font-weight: 700;">+ 2 Veículos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS OVERLAP -->
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Anos de Mercado</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number text-accent">24h</div>
+                <div class="stat-label">Monitoramento</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">2MI+</div>
+                <div class="stat-label">Recuperados (R$)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAIN POINTS -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Você vive com medo?</h2>
+                <p>Não deixe que a insegurança tire sua liberdade de andar por Timon e Teresina.</p>
+            </div>
+
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="pain-icon"><i class="fa-solid fa-person-biking"></i></div>
+                    <h3>Insegurança Diária</h3>
+                    <p>Medo constante de ser abordado no sinal ou na porta de casa e perder seu bem.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h3>Seguros Abusivos</h3>
+                    <p>Cotações de seguradoras tradicionais que custam quase o valor da moto.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="pain-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3>Prejuízo Sem Fim</h3>
+                    <p>O pesadelo de continuar pagando parcelas de um veículo que já foi roubado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing-section" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white">Blindagem Total</h2>
+                <p style="color: #94a3b8;">Escolha o nível de segurança ideal para sua necessidade.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Basic Card -->
+                <div class="pricing-card">
+                    <div class="price-title">Essencial</div>
+                    <div class="price-desc">Monitoramento e Bloqueio</div>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Monitoramento 24h</li>
+                        <li><i class="fa-solid fa-check"></i> Bloqueio pelo App</li>
+                        <li><i class="fa-solid fa-check"></i> Alerta de Ignição</li>
+                        <li><i class="fa-solid fa-check"></i> Equipe de Busca</li>
+                        <li class="unavailable"><i class="fa-solid fa-xmark"></i> Reembolso FIPE</li>
+                    </ul>
+
+                    <a href="https://wa.me/559985017954?text=Cotar%20Plano%20Essencial" class="btn btn-outline"
+                        style="width: 100%; border-color: #e2e8f0; color: var(--text-dark);">
+                        COTAR ESSENCIAL
+                    </a>
+                </div>
+
+                <!-- Premium Card -->
+                <div class="pricing-card featured">
+                    <div class="badge-guarantee"><i class="fa-solid fa-crown"></i> O MAIS SEGURO</div>
+                    <div class="price-title" style="color: var(--color-primary); margin-top: 10px;">Garantido 100%</div>
+                    <div class="price-desc">Se não recuperar, pagamos a FIPE*</div>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check-double text-cyan"></i> <strong>Todos do Essencial</strong></li>
+                        <li><i class="fa-solid fa-check"></i> Equipe Prioritária</li>
+                        <li class="feature-highlight"><i class="fa-solid fa-shield-halved"></i> <strong>GARANTIA 100%
+                                FIPE</strong></li>
+                        <li><i class="fa-solid fa-check"></i> Indenização Cartório</li>
+                    </ul>
+
+                    <a href="https://wa.me/559985017954?text=Quero%20Blindagem%20Total%20com%20FIPE"
+                        class="btn btn-primary" style="width: 100%;">
+                        QUERO BLINDAGEM TOTAL
+                    </a>
+                    <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 10px;">*Consulte regulamento para motos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">J&C RASTREAMENTO</div>
+            <p>Av. Presidente Médici, 1174 - Parque Piauí, Timon - MA</p>
+            <div class="footer-links">
+                <a onclick="document.getElementById('privacyModal').style.display='block'">Política de Privacidade</a> •
+                <a onclick="document.getElementById('termsModal').style.display='block'">Termos de Uso</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">© 2024 J&C Rastreamento. Todos os direitos
+                reservados.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY WHATSAPP -->
+    <a href="https://wa.me/559985017954" class="sticky-whatsapp" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- MODALS -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+            <h3 style="margin-bottom: 20px;">Política de Privacidade</h3>
+            <p>Respeitamos sua privacidade. Seus dados de contato (telefone) são utilizados exclusivamente para
+                atendimento via WhatsApp solicitado por você. Não compartilhamos informações com terceiros.</p>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
+            <h3 style="margin-bottom: 20px;">Termos de Uso</h3>
+            <p>A garantia de reembolso de 100% da Tabela FIPE é válida exclusivamente para o Plano Garantido, mediante
+                assinatura de contrato e cumprimento das normas de segurança estipuladas (ex: teste mensal do
+                rastreador).</p>
+        </div>
+    </div>
+
+    <script>
+        // Close modals on click outside
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

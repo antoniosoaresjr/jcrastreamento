@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J&C Rastreamento | Segurança em Timon e Teresina</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           1. VARIÁVEIS DE CORES
+           ========================================= */
+        :root {
+            --main-yellow: #FFCC00;    /* Amarelo Ouro */
+            --brand-cyan: #13aae3;     /* Azul Ciano (Logo) */
+            --deep-blue: #1F2A44;      /* Azul Escuro */
+            --whatsapp-green: #25D366; /* Verde Zap */
+            --text-dark: #333333;
+            --bg-light: #f4f6f8;
+        }
+
+        /* =========================================
+           2. ESTILOS GERAIS
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); background-color: var(--bg-light); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--deep-blue); }
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-whatsapp-action {
+            background-color: var(--whatsapp-green);
+            color: white;
+            font-size: 1rem;
+        }
+        .btn-whatsapp-action:hover {
+            background-color: #1ebe57;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* =========================================
+           3. CABEÇALHO
+           ========================================= */
+        header {
+            background-color: var(--main-yellow);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border-bottom: 4px solid var(--brand-cyan);
+        }
+        .logo { 
+            color: var(--deep-blue); 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            line-height: 1.2;
+        }
+        .logo i { color: var(--brand-cyan); font-size: 1.2rem; }
+
+        /* =========================================
+           4. HERO SECTION (Desktop)
+           ========================================= */
+        .hero {
+            background: linear-gradient(rgba(255, 204, 0, 0.95), rgba(255, 204, 0, 0.95)), 
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1470&auto=format&fit=crop') center/cover;
+            padding: 50px 5% 40px;
+            color: var(--deep-blue);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .hero-text { flex: 1; min-width: 300px; padding-right: 20px; z-index: 2; }
+        
+        .hero-text h1 { 
+            font-size: 2.5rem; 
+            line-height: 1.2; 
+            margin-bottom: 15px; 
+            color: var(--deep-blue); 
+        }
+        
+        .hero-text span { 
+            color: var(--deep-blue); 
+            background: rgba(255,255,255,0.3); 
+            padding: 0 5px;
+            border-radius: 5px;
+        }
+        
+        .hero-text p { 
+            font-size: 1.2rem; 
+            margin-bottom: 30px; 
+            font-weight: 500;
+            color: var(--deep-blue); 
+        }
+        
+        .hero-image { flex: 1; min-width: 300px; text-align: center; position: relative; }
+        .hero-image img { 
+            max-width: 100%; 
+            height: auto; 
+            max-height: 450px; 
+            filter: drop-shadow(0 10px 20px rgba(0,0,0, 0.3)); 
+        }
+
+        /* =========================================
+           5. OUTRAS SEÇÕES
+           ========================================= */
+        
+        /* Dores */
+        .pain-section { padding: 60px 5%; text-align: center; background-color: white; }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .pain-card {
+            background: var(--bg-light); padding: 30px; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--deep-blue);
+        }
+        .pain-card i { font-size: 2rem; color: var(--deep-blue); margin-bottom: 15px; }
+
+        /* BENEFÍCIOS */
+        .benefits-section { background-color: var(--deep-blue); color: white; padding: 60px 5%; text-align: center; }
+        .benefits-section h2 { color: var(--main-yellow); }
+        .benefits-section p { color: #ccc; font-size: 0.95rem; margin-top: 10px; opacity: 0.9; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .benefit-item i { font-size: 2.5rem; color: var(--brand-cyan); margin-bottom: 15px; filter: drop-shadow(0 0 5px rgba(19, 170, 227, 0.5)); }
+        .benefit-item h3 { color: white; margin-bottom: 5px; }
+
+        /* Oferta */
+        .pricing-section { padding: 80px 5%; text-align: center; background: #fff; }
+        .pricing-subtitle { margin-bottom: 50px; color: #666; }
+        .pricing-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
+
+        .price-card {
+            background: white; border: 1px solid #eee; border-radius: 15px; padding: 30px;
+            width: 100%; max-width: 350px; transition: 0.3s; position: relative;
+        }
+        .card-super {
+            border: 3px solid var(--main-yellow);
+            transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0, 0.1);
+            z-index: 2; background: linear-gradient(to bottom, #fff, #fffff0);
+        }
+        .card-super:hover { transform: scale(1.08); box-shadow: 0 0 30px rgba(255, 204, 0, 0.4); }
+        
+        .badge-best {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--brand-cyan); color: white; padding: 5px 20px;
+            border-radius: 20px; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(19, 170, 227, 0.4);
+        }
+        
+        .offer-tag {
+            display: inline-block; background: rgba(19, 170, 227, 0.1); color: var(--brand-cyan);
+            padding: 5px 15px; border-radius: 5px; font-weight: bold; font-size: 0.9rem;
+            border: 1px solid rgba(19, 170, 227, 0.3);
+        }
+
+        .features { text-align: left; margin-bottom: 30px; margin-top: 20px;}
+        .features li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .features i { color: var(--brand-cyan); } 
+        .features .unavailable { color: #ccc; text-decoration: line-through; }
+        .features .unavailable i { color: #ccc; }
+        .features .highlight-feature { font-weight: bold; color: var(--deep-blue); background: rgba(255, 204, 0, 0.2); padding: 5px; border-radius: 5px;}
+
+        /* Testemunhos, FAQ, Footer */
+        .testimonials { background-color: var(--bg-light); padding: 60px 5%; text-align: center; }
+        .testi-grid { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; justify-content: center; flex-wrap: wrap;}
+        .testi-card { background: white; padding: 20px; border-radius: 10px; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .stars { color: var(--main-yellow); margin-bottom: 10px; }
+        
+        .faq-section { padding: 60px 5%; max-width: 800px; margin: 0 auto; background: white; }
+        .faq-item { background: white; border-bottom: 1px solid #eee; padding: 15px; margin-bottom: 10px; }
+        .faq-question { font-weight: bold; color: var(--deep-blue); }
+        
+        /* FOOTER E LINKS LEGAIS */
+        footer { background: var(--main-yellow); color: var(--deep-blue); text-align: center; padding: 40px 5% 100px; font-size: 0.9rem; border-top: 4px solid var(--brand-cyan); }
+        .footer-logo { font-size: 1.5rem; color: var(--deep-blue); margin-bottom: 15px; font-weight: bold; }
+        .footer-links { margin-top: 20px; font-size: 0.85rem; }
+        .footer-links a { color: var(--deep-blue); text-decoration: underline; margin: 0 10px; cursor: pointer;}
+        
+        .sticky-zap {
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background-color: var(--whatsapp-green); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 35px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 9999; animation: pulse 2s infinite;
+        }
+
+        /* --- ESTILOS DO MODAL (POP-UP) --- */
+        .modal {
+            display: none; /* Oculto por padrão */
+            position: fixed; 
+            z-index: 10000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); /* Fundo preto transparente */
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; 
+            padding: 40px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover { color: black; }
+        .modal-body h2 { color: var(--deep-blue); margin-bottom: 20px; }
+        .modal-body p, .modal-body li { font-size: 0.95rem; color: #555; margin-bottom: 10px; }
+
+        /* =========================================
+           6. VERSÃO MOBILE (Ajustes Específicos)
+           ========================================= */
+        @media (max-width: 768px) {
+            header { padding: 10px 5%; }
+            .logo { font-size: 1.1rem; max-width: 60%; line-height: 1.1; }
+            .logo i { font-size: 1.6rem !important; }
+            .header-btn-mobile { padding: 6px 14px !important; font-size: 0.75rem !important; border-radius: 30px; }
+
+            .hero { 
+                background: linear-gradient(160deg, rgba(255, 204, 0, 0.95) 0%, rgba(19, 170, 227, 0.9) 100%), 
+                            url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1470&auto=format&fit=crop') center/cover !important;
+                flex-direction: column; 
+                padding-top: 20px !important;
+                padding-bottom: 40px !important;
+                text-align: center;
+            }
+            .hero-text { padding-right: 0; }
+            .hero-text h1 { font-size: 1.8rem; margin-bottom: 10px; }
+            .hero-text span { 
+                background: #ffffff !important; padding: 5px 15px !important; border-radius: 8px !important;
+                box-shadow: 4px 4px 0px rgba(0,0,0,0.2) !important; margin: 5px 0 !important;
+                color: var(--deep-blue) !important; display: inline-block;
+            }
+            .hero-text p { font-size: 1rem; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); opacity: 0.95; margin-bottom: 20px; }
+            .hero-image { margin-top: 50px !important; margin-bottom: 20px !important; }
+            .hero-image img { max-height: 250px; margin-bottom: 5px; }
+            
+            .pricing-container { flex-direction: column; align-items: center;}
+            .card-super { transform: scale(1); width: 100%; margin-top: 20px; }
+            .modal-content { width: 90%; margin: 20% auto; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-location-dot"></i> J&C RASTREAMENTO
+        </div>
+        <a href="https://wa.me/559985017954?text=Olá,%20vim%20do%20Google%20e%20preciso%20de%20atendimento." class="btn btn-whatsapp-action header-btn-mobile" style="padding: 10px 20px; font-size: 0.9rem;">
+            <i class="fa-brands fa-whatsapp"></i> Falar Agora
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Cuidado ao escolher seu rastreador em Timon e Teresina. A outra empresa paga a <span>Tabela FIPE</span> se não achar sua moto?</h1>
+            <p>Monitoramento 24h com Equipe de Busca Tática. Se não recuperarmos sua moto (Plano Garantido), <strong>nós pagamos a tabela FIPE.</strong></p>
+            <a href="https://wa.me/559985017954?text=Olá,%20vim%20do%20Google%20e%20quero%20proteger%20meu%20veículo." class="btn btn-whatsapp-action btn-pulse">
+                <i class="fa-solid fa-shield-halved"></i> QUERO PROTEGER AGORA
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="http://jcrastreamento.com.br/wp-content/uploads/2026/02/com-sombra.png" alt="Mascote Leão J&C Rastreamento" title="Seu Leão Aqui">
+        </div>
+    </section>
+
+    <!-- COMPARISON BLOCK (Nós vs. Eles) -->
+    <style>
+        .comparison-section {
+            padding: 60px 5%;
+            background-color: white;
+            text-align: center;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .comparison-section h2 span {
+            color: var(--brand-cyan);
+            background: rgba(19, 170, 227, 0.1);
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+        .comparison-card {
+            padding: 40px;
+            border-radius: 20px;
+            text-align: left;
+            position: relative;
+            transition: 0.3s;
+        }
+        .card-others {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .card-jc {
+            background-color: var(--deep-blue);
+            color: white;
+            border: 4px solid var(--main-yellow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .comparison-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card-jc h3 { color: var(--main-yellow); }
+        .comparison-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+        .comparison-list li span {
+            flex: 1;
+        }
+        .comparison-list i {
+            margin-top: 5px;
+        }
+        .text-danger { color: #ef4444; }
+        .text-success { color: var(--whatsapp-green); }
+        
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .comparison-card { padding: 30px; }
+        }
+    </style>
+    
+    <section class="comparison-section">
+        <h2>Por que fechar com a concorrência é um <span>Risco Financeiro?</span></h2>
+        <div class="comparison-grid">
+            <!-- Outras Empresas -->
+            <div class="comparison-card card-others">
+                <h3>Rastreadores Comuns</h3>
+                <ul class="comparison-list">
+                    <li><i class="fa-solid fa-circle-xmark text-danger"></i> <span>Só oferecem o aplicativo para você olhar.</span></li>
+                    <li><i class="fa-solid fa-circle-xmark text-danger"></i> <span>Se roubarem e não acharem, o prejuízo é 100% seu.</span></li>
+                    <li><i class="fa-solid fa-circle-xmark text-danger"></i> <span>Sem equipe tática de busca real.</span></li>
+                </ul>
+            </div>
+            
+            <!-- JC Rastreamento -->
+            <div class="comparison-card card-jc">
+                <h3>J&C Rastreamento</h3>
+                <ul class="comparison-list">
+                    <li><i class="fa-solid fa-circle-check text-success"></i> <span>Aplicativo de última geração + Bloqueio.</span></li>
+                    <li><i class="fa-solid fa-circle-check text-success"></i> <span><strong>Equipe Tática de Busca 24h</strong> nas ruas.</span></li>
+                    <li><i class="fa-solid fa-circle-check text-success"></i> <span><strong>Indenização 100% FIPE em Cartório</strong> se não recuperarmos.</span></li>
+                </ul>
+                <div style="margin-top: 25px; font-weight: 700; color: var(--main-yellow); font-size: 1.2rem;">
+                    RISCO ZERO PARA VOCÊ.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <h2>Você vive com esse medo?</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <i class="fa-solid fa-person-biking"></i>
+                <h3>Insegurança na Rua</h3>
+                <p>Medo constante de ser abordado e perder o veículo que você suou para conquistar.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <h3>Seguro Tradicional Caro</h3>
+                <p>As seguradoras cobram preços absurdos que muitas vezes não cabem no bolso.</p>
+            </div>
+            <div class="pain-card">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h3>Prejuízo Total</h3>
+                <p>O pesadelo de continuar pagando as parcelas de uma moto que já foi roubada.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <h2>Por que escolher a J&C?</h2>
+        <p>Mais de 8 anos recuperando veículos em Timon e Teresina.</p>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>App na Palma da Mão</h3>
+                <p>Controle total e bloqueio pelo celular.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-motorcycle"></i>
+                <h3>Equipe de Busca 24h</h3>
+                <p>Temos uma equipe tática pronta para recuperar seu bem.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <h3>Garantia FIPE</h3>
+                <p>Se não acharmos, pagamos o valor da moto (Plano Garantido).</p>
+            </div>
+            <div class="benefit-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>+2 Milhões</h3>
+                <p>de reais em veículos recuperados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <h2>Escolha seu Nível de Proteção</h2>
+        <p class="pricing-subtitle">Clique nos botões abaixo para verificar as <strong>condições de adesão promocionais de hoje.</strong></p>
+        
+        <div class="pricing-container">
+            <div class="price-card">
+                <h3>Rastreamento Essencial</h3>
+                <div style="margin: 20px 0;">
+                    <span class="offer-tag"><i class="fa-solid fa-tag"></i> OFERTA ECONÔMICA</span>
+                    <p style="margin-top: 10px; font-size: 1.1rem; color: #555;">Ideal para monitorar e bloquear.</p>
+                </div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> Monitoramento 24h</li>
+                    <li><i class="fa-solid fa-check"></i> Bloqueio Imediato pelo App</li>
+                    <li><i class="fa-solid fa-check"></i> Alerta de Movimento</li>
+                    <li><i class="fa-solid fa-check"></i> Equipe de Busca Tática</li>
+                    <li class="unavailable"><i class="fa-solid fa-xmark"></i> Reembolso Tabela FIPE</li>
+                </ul>
+                <a href="https://wa.me/559985017954?text=Vim%20do%20Google%20e%20gostaria%20de%20saber%20o%20valor%20do%20Plano%20Básico%20e%20se%20tem%20oferta%20na%20adesão." class="btn btn-whatsapp-action" style="width: 100%;">COTAR PLANO BÁSICO</a>
+            </div>
+
+            <div class="price-card card-super">
+                <div class="badge-best">MAIS SEGURO 🦁</div>
+                <h3>Rastreamento Garantido</h3>
+                <div style="margin: 20px 0;">
+                     <span class="offer-tag" style="background: rgba(37, 211, 102, 0.1); color: var(--whatsapp-green); border-color: var(--whatsapp-green);">
+                        <i class="fa-solid fa-shield-halved"></i> RISCO ZERO
+                    </span>
+                    <p style="margin-top: 10px; font-size: 1.1rem; color: var(--deep-blue); font-weight: 600;">Se não recuperar, pagamos a FIPE.</p>
+                </div>
+                <ul class="features">
+                    <li><i class="fa-solid fa-check"></i> <strong>Todos benefícios do básico</strong></li>
+                    <li><i class="fa-solid fa-check"></i> Equipe de Busca Prioritária</li>
+                    <li class="highlight-feature"><i class="fa-solid fa-file-contract"></i> <strong>GARANTIA 100% FIPE</strong></li>
+                    <li><i class="fa-solid fa-check"></i> Indenização em Cartório*</li>
+                </ul>
+                <a href="https://wa.me/559985017954?text=Vim%20do%20Google,%20quero%20proteger%20100%%20da%20FIPE.%20Qual%20a%20condição%20de%20hoje?" class="btn btn-whatsapp-action btn-pulse" style="width: 100%;">SIMULAR PROTEÇÃO TOTAL</a>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">*Consulte regulamento para motos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Quem usa, recomenda</h2>
+        <br>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Recuperaram minha Fan em menos de 1 hora aqui no Parque Piauí. O bloqueio funcionou na hora. Recomendo demais!"</p>
+                <br><strong>- Carlos Silva, Timon-MA</strong>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Eu tinha medo de deixar a moto no centro de Teresina. Agora com o App da J&C fico tranquila. O atendimento é nota 10."</p>
+                <br><strong>- Maria Eduarda, Teresina-PI</strong>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>"Optei pelo Plano Garantido pela segurança da FIPE. Graças a Deus a equipe recuperou minha moto, mas só de saber que meu dinheiro estava protegido já valeu a pena. Empresa séria!"</p>
+                <br><strong>- Pedro Henrique, Timon-MA</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h3>Dúvidas Frequentes</h3>
+        <br>
+        <div class="faq-item">
+            <div class="faq-question">O rastreador descarrega a bateria?</div>
+            <p>Não! Nossos equipamentos possuem tecnologia de baixo consumo e não prejudicam a parte elétrica da sua moto.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Vocês atendem em quais cidades?</div>
+            <p>Nossa base forte é em Timon-MA e Teresina-PI, cobrindo toda a região metropolitana.</p>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Como funciona a garantia FIPE?</div>
+            <p>No Plano Garantido, se seu veículo for furtado/roubado e nossa equipe não conseguir recuperar, nós indenizamos você com 100% da tabela FIPE (apenas motos, confira regulamento).</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">J&C RASTREAMENTO</div>
+        <p>Av. Presidente Médici, 1174 - Parque Piauí, Timon - MA</p>
+        <br>
+        <p>Copyright © 2024 J&C Rastreamento LTDA - Desenvolvido por Antonio Júnior</p>
+        
+        <div class="footer-links">
+            <a onclick="openModal('privacyModal')">Política de Privacidade</a> | 
+            <a onclick="openModal('termsModal')">Termos de Uso</a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/559985017954?text=Vim%20do%20Google%20pelo%20site%20e%20preciso%20de%20ajuda" class="sticky-zap" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+            <div class="modal-body">
+                <h2>Política de Privacidade</h2>
+                <p>A J&C Rastreamento valoriza a privacidade de seus usuários. Esta Política descreve como coletamos e usamos seus dados.</p>
+                <h3>1. Coleta de Dados</h3>
+                <p>Ao clicar nos botões de contato, coletamos apenas os dados necessários para iniciar o atendimento via WhatsApp (número de telefone).</p>
+                <h3>2. Uso das Informações</h3>
+                <p>Utilizamos seus dados exclusivamente para: Fornecer cotações, agendar instalações e suporte técnico.</p>
+                <h3>3. Compartilhamento</h3>
+                <p>Não vendemos nem compartilhamos seus dados com terceiros para fins de marketing.</p>
+                <p><strong>Contato:</strong> Para dúvidas, visite nossa sede na Av. Presidente Médici, 1174, Timon-MA.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
+            <div class="modal-body">
+                <h2>Termos de Uso</h2>
+                <p>Bem-vindo à J&C Rastreamento.</p>
+                <h3>1. Serviços</h3>
+                <p>Oferecemos serviços de monitoramento e recuperação veicular. A garantia FIPE aplica-se exclusivamente aos contratos do "Plano Garantido", conforme regulamento assinado na adesão.</p>
+                <h3>2. Responsabilidades</h3>
+                <p>O usuário deve manter o pagamento em dia para garantir a cobertura dos serviços de busca e recuperação.</p>
+                <h3>3. Instalação</h3>
+                <p>A instalação deve ser agendada e realizada por técnicos autorizados da J&C para garantir o funcionamento correto.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Fecha o modal se clicar fora da caixa branca
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
