@@ -14,9 +14,8 @@ function App() {
   }, []);
 
   const handleWhatsAppClick = (planName) => {
-    const baseMessage = 'Olá! Vim pelo site da J&C Rastreamento e gostaria de saber mais.';
-    const finalMessage = planName ? `${baseMessage} (${planName})` : baseMessage;
-    const encodedMessage = encodeURIComponent(finalMessage);
+    const message = 'Olá, tudo bem? Vim pelo Google e gostaria de proteger o meu veículo com a J&C Rastreamento.';
+    const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/5586994191636?text=${encodedMessage}`, '_blank');
   };
 
