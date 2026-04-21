@@ -109,11 +109,10 @@ function App() {
               <p className="text-gray text-sm mb-6">Proteção tecnológica e Autogestão.</p>
               
               <ul className="feature-list">
-                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Rastreamento em Tempo Real</span></li>
-                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Bloqueio Remoto por App</span></li>
-                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Suporte Técnico</span></li>
-                <li className="feature-item unavailable"><X size={20} className="text-gray" /> <span>Equipe Tática de Busca</span></li>
-                <li className="feature-item unavailable"><X size={20} className="text-gray" /> <span>Garantia de Compra FIPE</span></li>
+                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Rastreamento + Bloqueio Premium</span></li>
+                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Assistência de Equipe Tática (Buscadores)</span></li>
+                <li className="feature-item"><Check size={20} className="text-brand-cyan" /> <span>Suporte Emergencial 24h</span></li>
+                <li className="feature-item unavailable"><X size={20} className="text-gray" /> <span>Garantia Tabela FIPE (Indenização)</span></li>
               </ul>
               <button onClick={() => handleWhatsAppClick('Plano Essencial')} className="btn" style={{ background: 'rgba(255,255,255,0.1)', color: 'white' }}>Assinar Essencial</button>
             </div>
@@ -127,10 +126,10 @@ function App() {
               <p className="text-gray text-sm mb-6">Se roubarem e não recuperarmos, nós pagamos o valor.</p>
               
               <ul className="feature-list">
-                <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span className="font-bold">Garantia Tabela FIPE (Indenização)</span></li>
-                <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span>Assistência de Equipe Tática (Buscadores)</span></li>
                 <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span>Rastreamento + Bloqueio Premium</span></li>
+                <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span>Assistência de Equipe Tática (Buscadores)</span></li>
                 <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span>Suporte Emergencial 24h</span></li>
+                <li className="feature-item"><Check size={20} className="text-primary-yellow" /> <span className="font-bold">Garantia Tabela FIPE (Indenização)</span></li>
               </ul>
               <button onClick={() => handleWhatsAppClick('Plano Garantido FIPE')} className="btn btn-whatsapp">Proteger com Garantia FIPE</button>
             </div>
