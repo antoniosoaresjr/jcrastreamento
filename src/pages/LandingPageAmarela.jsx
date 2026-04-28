@@ -1,0 +1,177 @@
+import React, { useState, useEffect } from 'react';
+import { Shield, MapPin, Smartphone, Zap, Check, X, Clock, Car, Lock } from 'lucide-react';
+import '../index.css';
+import '../amarela.css';
+
+function LandingPageAmarela() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleWhatsAppClick = (planName) => {
+    const message = 'Olá, tudo bem? Vim pelo Google e gostaria de proteger o meu veículo com a J&C Rastreamento.';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/559985017954?text=${encodedMessage}`, '_blank');
+  };
+
+  return (
+    <div className="app-container bg-theme-yellow text-dark-theme">
+      {/* Header */}
+      <header className={`glass-header-yellow ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container flex justify-between items-center">
+          <div className="logo font-bold text-xl text-dark-theme">
+            <span className="font-bold">J&C</span> Rastreamento
+          </div>
+          <button onClick={() => handleWhatsAppClick()} className="btn btn-whatsapp pulse-animation text-sm" style={{ padding: '0.6rem 1.2rem' }}>
+            <Zap size={16} fill="currentColor" /> Falar Agora
+          </button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-bg-yellow-transparent"></div>
+        <div className="hero-overlay-yellow-transparent"></div>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className="hero-content">
+            <div className="badge badge-dark">
+              <Lock size={14} style={{ display: 'inline', marginRight: '4px' }} /> Proteção Total em Teresina e Timon
+            </div>
+            <h1 className="hero-title text-dark-theme">
+              40% de desconto na proteção do seu veículo – <span className="font-bold">só hoje!</span>
+            </h1>
+            <p className="hero-subtitle text-dark-muted">
+              Mais de R$2 milhões em veículos recuperados. Equipe pronta 24h, tecnologia em tempo real e garantia de até 100% da FIPE. Aproveite antes que acabe!
+            </p>
+            <div className="flex" style={{ gap: '1rem', flexWrap: 'wrap' }}>
+              <button onClick={() => handleWhatsAppClick()} className="btn btn-dark pulse-animation" style={{ padding: '1.2rem 2.5rem', fontSize: '1.125rem' }}>
+                Falar com o Time Já ✅
+              </button>
+            </div>
+            
+            <div className="flex items-center mt-8 gap-4 text-dark-muted text-sm font-semibold">
+              <div className="flex items-center gap-2">
+                <Shield size={16} className="text-dark-theme" /> Instalação Segura
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock size={16} className="text-dark-theme" /> Suporte 24/7
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="section-padding bg-yellow-light">
+        <div className="container">
+          <div className="text-center mb-8">
+            <h2 className="text-dark-theme" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Tecnologia de Prevenção</h2>
+            <p className="text-dark-muted" style={{ maxWidth: '600px', margin: '0 auto' }}>Monitoramento de precisão militar na palma da sua mão. Controle absoluto do seu patrimônio.</p>
+          </div>
+
+          <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+            <div className="feature-card-light">
+              <div className="icon-box-dark"><Smartphone size={32} /></div>
+              <h3 className="font-bold text-xl mb-2 text-dark-theme">App em Tempo Real</h3>
+              <p className="text-dark-muted text-sm">Acompanhe a localização exata, velocidade e histórico de rotas diretamente do seu celular com delay zero.</p>
+            </div>
+            <div className="feature-card-light">
+              <div className="icon-box-dark"><Shield size={32} /></div>
+              <h3 className="font-bold text-xl mb-2 text-dark-theme">Bloqueio Satelital</h3>
+              <p className="text-dark-muted text-sm">Corte a ignição e o combustível do veículo com um simples toque no botão do aplicativo em caso de emergência.</p>
+            </div>
+            <div className="feature-card-light">
+              <div className="icon-box-dark"><MapPin size={32} /></div>
+              <h3 className="font-bold text-xl mb-2 text-dark-theme">Cercas Virtuais</h3>
+              <p className="text-dark-muted text-sm">Seja alertado instantaneamente se o veículo sair das zonas de segurança que você mesmo configurou.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing / CTA Section */}
+      <section className="section-padding bg-theme-yellow">
+        <div className="container">
+          <div className="text-center mb-8">
+            <h2 className="text-dark-theme" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Sua Tranquilidade Tem Preço?</h2>
+            <p className="text-dark-muted" style={{ maxWidth: '600px', margin: '0 auto' }}>Escolha o plano ideal para blindar sua moto ou carro hoje mesmo contra a violência de Teresina e Região.</p>
+          </div>
+
+          <div className="pricing-grid">
+            {/* Combo Master */}
+            <div className="pricing-card-light">
+              <h3 className="text-xl font-bold mb-2">Plano Essencial</h3>
+              <p className="text-dark-muted text-sm mb-6">Proteção tecnológica e Autogestão.</p>
+              
+              <ul className="feature-list">
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Rastreamento em Tempo Real</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Bloqueio Satelital Premium</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Cercas Virtuais de Segurança</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Assistência de Equipe Tática (Buscadores)</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Suporte Emergencial 24h</span></li>
+                <li className="feature-item-light unavailable"><X size={20} className="text-dark-muted" /> <span>Garantia Tabela FIPE (Indenização)</span></li>
+              </ul>
+              <button onClick={() => handleWhatsAppClick('Plano Essencial')} className="btn btn-dark" style={{ width: '100%' }}>Assinar Essencial</button>
+            </div>
+
+            {/* FIPE Guarantee */}
+            <div className="pricing-card-light highlight">
+              <div className="badge badge-dark" style={{ position: 'absolute', top: '-15px', right: '20px', background: '#111', color: '#FFCC00', border: 'none' }}>
+                RECOMENDADO
+              </div>
+              <h3 className="text-xl font-bold mb-2">Plano Garantido</h3>
+              <p className="text-dark-muted text-sm mb-6">Se roubarem e não recuperarmos, nós pagamos o valor.</p>
+              
+              <ul className="feature-list">
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Rastreamento em Tempo Real</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Bloqueio Satelital Premium</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Cercas Virtuais de Segurança</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Assistência de Equipe Tática (Buscadores)</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-semibold">Suporte Emergencial 24h</span></li>
+                <li className="feature-item-light"><Check size={20} className="text-dark-theme" /> <span className="font-bold">Garantia Tabela FIPE (Indenização)</span></li>
+              </ul>
+              <button onClick={() => handleWhatsAppClick('Plano Garantido FIPE')} className="btn btn-whatsapp" style={{ width: '100%' }}>Proteger com Garantia FIPE</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="section-padding footer-yellow" style={{ padding: '3rem 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="container text-center">
+          <div className="logo font-bold text-2xl mb-4" style={{ color: '#FFCC00' }}>
+            <span className="text-white">J&C</span> Rastreamento
+          </div>
+          <p className="text-gray text-sm mb-6 max-w-md mx-auto" style={{ maxWidth: '400px', margin: '0 auto 1.5rem auto' }}>
+            Avenida Piauí, 1378 - Parque Alvorada<br/>
+            Timon - MA, 65633-140
+          </p>
+          <p className="text-xs text-gray opacity-50">
+            &copy; {new Date().getFullYear()} J&C Rastreamento. CNPJ 38.077.585/0001-83. Todos os direitos reservados.
+          </p>
+        </div>
+      </footer>
+
+      {/* Floating Action Button */}
+      <a 
+        href="#" 
+        onClick={(e) => { e.preventDefault(); handleWhatsAppClick(); }} 
+        className="whatsapp-float" 
+        title="Fale Conosco pelo WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.41z"/>
+        </svg>
+      </a>
+    </div>
+  );
+}
+
+export default LandingPageAmarela;
+
