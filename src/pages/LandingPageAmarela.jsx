@@ -15,6 +15,13 @@ function LandingPageAmarela() {
   }, []);
 
   const handleWhatsAppClick = (planName) => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        plan_name: planName || 'Geral',
+        button_location: 'landing_page'
+      });
+    }
     const message = 'Olá, tudo bem? Vim pelo Google e gostaria de proteger o meu veículo com a J&C Rastreamento.';
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/559985017954?text=${encodedMessage}`, '_blank');
