@@ -156,11 +156,11 @@ function LandingPageAmarela() {
             <span className="text-white">J&C</span> Rastreamento
           </div>
           <p className="text-gray text-sm mb-6 max-w-md mx-auto" style={{ maxWidth: '400px', margin: '0 auto 1.5rem auto' }}>
-            Avenida Piauí, 1378 - Parque Alvorada<br/>
-            Timon - MA, 65633-140
+            Av. Pres. Médici, 1174 - Parque Piaui<br/>
+            Timon - MA
           </p>
           <p className="text-xs text-gray opacity-50">
-            &copy; {new Date().getFullYear()} J&C Rastreamento. CNPJ 38.077.585/0001-83. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} J&C Rastreamento. CNPJ 42.452.712/0001-91. Todos os direitos reservados.
           </p>
         </div>
       </footer>
